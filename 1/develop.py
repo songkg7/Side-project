@@ -26,8 +26,10 @@ for k, v in peaple.items():
         for i in img:
             imgUrl = i['data-source']
             with urlopen(imgUrl) as f:
+
                 with open('./img/' + k + '/' + person + '/' + person + ' ' + str(n)+'.jpg', 'wb') as h:
                     # w - write b - binary
+
                     img = f.read()
                     h.write(img)
             n += 1

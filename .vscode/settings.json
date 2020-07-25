@@ -3,5 +3,8 @@
   "launch": {
     "configurations": [],
     "compounds": []
+  },
+  "files.exclude": {
+    "**/.vscode": true
   }
 }
