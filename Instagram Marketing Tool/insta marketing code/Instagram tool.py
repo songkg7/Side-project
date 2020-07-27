@@ -5,12 +5,25 @@ import time
 import random
 from bs4 import BeautifulSoup
 
+
+# input_id = input("Your Instagram ID : ")
+# input_pw = input("Password : ")
+# input_keyword = input("Keyword to search for : ")
+# input_like = input("Enter the number, like = 1, commant = 2, both = 3  : ")
+# insta_id = input_id
+# insta_pw = input_pw
+# keyword = input_keyword
+# like = input_like
+
 # Instagrm data
 insta_id = "songkg8"
 insta_pw = "black7kg"
-keyword = "고양이"
+keyword = "아이린"
+like = 1
+
 # 1 일 경우 좋아요만, 2 일 경우 댓글만 ,3 일 경우 둘 다 실행, 그 외는 작업 안함
-like = 0
+
+
 # 작성하고 싶은 댓글 목록
 messageList = ["잘 보고 갑니다.", "Like it",
                "Very good!", "정말 예쁘네요!"]
@@ -36,7 +49,7 @@ driver.find_element_by_xpath(
 # driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
 
 # search
-time.sleep(3)
+time.sleep(random.uniform(3, 5))
 url = f"https://www.instagram.com/explore/tags/{keyword}/"
 driver.get(url)
 
@@ -66,7 +79,7 @@ for url in links:
         print(url)
         driver.get(url)
 
-        rndSec = random.randint(5, 10)
+        rndSec = random.uniform(4, 10)
         time.sleep(rndSec)
 
         message = random.choice(messageList)
