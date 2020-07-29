@@ -181,18 +181,35 @@
           labelContainer.appendChild(document.createElement("div"));
         }
       }
-
-      // run the webcam image through the image model
-      async function predict() {
-        // predict can take in an image, video or canvas html element
-        var image = document.getElementById("face-image");
-        const prediction = await model.predict(image, false);
-        prediction.sort(
-          (a, b) => parseFloat(b.probability) - parseFloat(a.probability)
-        );
-        console.log(prediction[0].className);
-        var resultMessege;
-        switch (prediction[0].className) {
+    </script>
+    <script>
+      var title =
+        "<div class='" +
+        prediction[0].className +
+        "-animal-title'>" +
+        resultTitle +
+        "</div>";
+      var explain =
+        "<div class='animal-explain pt-2'>" + resultExplain + "</div>";
+      var celeb =
+        "<div class='" +
+        prediction[0].className +
+        "-animal-celeb pt-2'>" +
+        resultCeleb +
+        "</div>";
+      $(".result-message").html(title + explain + celeb);
+      var barWidth;
+      for (let i = 0; i < maxPredictions; i++) {
+        if (prediction[i].probability.toFixed(2) > 0.1) {
+          barWidth =
+            Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+        } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+          barWidth = "4%";
+        } else {
+          barWidth = "2%";
+        }
+        var labelTitle;
+        switch (prediction[i].className) {
           case "Dog":
             resultMessege = "강아지상";
             break;
@@ -215,14 +232,23 @@
           default:
             resultMessege = "알수없음";
         }
-        $(".result-messege").html(resultMessege);
-        for (let i = 0; i < maxPredictions; i++) {
-          const classPrediction =
-            prediction[i].className +
-            ": " +
-            prediction[i].probability.toFixed(2);
-          labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
+
+        // Graph
+        var label =
+          "<div class='animal-label d-flex align-items-center'>" +
+          labelTitle +
+          "</div>";
+        var bar =
+          "<div class='bar-container position-relative container'><div class='" +
+          prediction[i].className +
+          "-box'></div> <div class='d-flex justify-content-center align-items-center " +
+          prediction[i].className +
+          "-bar'style='width: " +
+          barWidth +
+          "'><span class='d-block percent-text'>" +
+          Math.round(prediction[i].probability.toFixed(2) * 100) +
+          "%</span></div></div>";
+        labelContainer.childNodes[i].innerHTML = label + bar;
       }
     </script>
     <script>
