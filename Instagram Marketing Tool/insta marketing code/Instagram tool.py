@@ -73,6 +73,7 @@ time.sleep(4)
 pageString = driver.page_source
 links = parse(pageString)
 
+
 # 좋아요 누르고 댓글 달기
 for url in links:
     try:
