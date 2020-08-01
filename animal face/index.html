@@ -142,6 +142,7 @@
     <section class="d-flex justify-content-center">
       <p class="d-flex align-items-center pr-3">여자</p>
       <div>
+        <!-- gender toggle switch -->
         <input type="checkbox" id="gender" />
         <label for="gender">
           <span class="knob">
@@ -410,6 +411,8 @@
       const urlFemale =
         "https://teachablemachine.withgoogle.com/models/bB3YHn5r/";
       let model, webcam, labelContainer, maxPredictions;
+
+      // gender toggle 에 따라 성별 선택 후 실행하는 함수
       async function init() {
         if (document.getElementById("gender").checked) {
           URL = urlMale;
@@ -427,6 +430,7 @@
           labelContainer.appendChild(element);
         }
       }
+
       async function predict() {
         var image = document.getElementById("face-image");
         const prediction = await model.predict(image, false);
