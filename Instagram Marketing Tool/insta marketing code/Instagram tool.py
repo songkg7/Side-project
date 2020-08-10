@@ -16,9 +16,9 @@ from bs4 import BeautifulSoup
 # like = input_like
 
 # Instagrm data
-insta_id = "songkg8"
-insta_pw = "black7kg"
-keyword = "아이린"
+insta_id = "chaithelog_poo"
+insta_pw = "@dkdud12325"
+keyword = "견주소통"
 like = 1
 
 # 1 일 경우 좋아요만, 2 일 경우 댓글만 ,3 일 경우 둘 다 실행, 그 외는 작업 안함
@@ -38,11 +38,11 @@ driver.get(url)
 
 time.sleep(3)
 driver.find_element_by_xpath(
-    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input').send_keys(insta_id)
+    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[1]/div/label/input').send_keys(insta_id)
 driver.find_element_by_xpath(
-    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys(insta_pw)
+    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[2]/div/label/input').send_keys(insta_pw)
 driver.find_element_by_xpath(
-    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
+    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[3]/button/div').click()
 
 # time.sleep(3)
 # popup
