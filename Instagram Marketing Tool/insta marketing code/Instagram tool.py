@@ -13,6 +13,8 @@ from bs4 import BeautifulSoup
 # input_keyword = pyautogui.prompt('검색할 키워드를 입력해주세요', '아영이의 편리한 생활')
 # input_like = pyautogui.prompt('작업할 내용을 번호로 입력해주세요. like = 1, commant = 2, both = 3')
 
+print('test')
+
 # Instagrm data
 insta_id = "songkg8"
 insta_pw = "black7kg"
