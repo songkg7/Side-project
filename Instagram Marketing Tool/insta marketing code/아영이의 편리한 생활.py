@@ -13,8 +13,7 @@ like = "1"
 
 
 # 작성하고 싶은 댓글 목록
-messageList = ["잘 보고 갑니다.", "Like it",
-               "Very good!", "정말 예쁘네요!"]
+messageList = ["잘 보고 갑니다.", "Like it", "Very good!", "정말 예쁘네요!"]
 
 
 driver = webdriver.Chrome(
@@ -26,11 +25,14 @@ driver.get(url)
 
 time.sleep(3)
 driver.find_element_by_xpath(
-    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[1]/div/label/input').send_keys(insta_id)
+    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[1]/div/label/input'
+).send_keys(insta_id)
 driver.find_element_by_xpath(
-    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[2]/div/label/input').send_keys(insta_pw)
+    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[2]/div/label/input'
+).send_keys(insta_pw)
 driver.find_element_by_xpath(
-    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[3]/button/div').click()
+    '//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div[3]/button/div'
+).click()
 
 # time.sleep(3)
 # popup
@@ -51,7 +53,7 @@ def parse(pageString):
     for v1Nh3 in v1Nh3List:
         instaLink = "https://www.instagram.com"
         # <a href="123" alt="456">hi my name is ~~</a>
-        linkAddr = v1Nh3.find("a")['href']
+        linkAddr = v1Nh3.find("a")["href"]
         links.append(instaLink + linkAddr)
 
     return links
@@ -76,16 +78,20 @@ for url in links:
         # 좋아요
         if like == 1 or like == 3:
             driver.find_element_by_xpath(
-                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[1]/span[1]/button').click()
+                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[1]/span[1]/button'
+            ).click()
 
         # 댓글
         if like == 2 or like == 3:
             driver.find_element_by_xpath(
-                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[3]/div/form/textarea').click()
+                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[3]/div/form/textarea'
+            ).click()
             driver.find_element_by_xpath(
-                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[3]/div/form/textarea').send_keys(message)
+                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[3]/div/form/textarea'
+            ).send_keys(message)
             driver.find_element_by_xpath(
-                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[3]/div/form/button').click()
+                '//*[@id="react-root"]/section/main/div/div/article/div[3]/section[3]/div/form/button'
+            ).click()
 
     except Exception as e:
         pass
