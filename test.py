@@ -1,17 +1,19 @@
-# 문자 재정렬
-data = input()
-result = []
-value = 0
+participant = ["leo", "kiki", "eden"]
+completion = ["eden", "kiki"]
 
-for x in data:
-    if x.isalpha():
-        result.append(x)
-    else:
-        value += int(x)
 
-result.sort()
+def solution(participant, completion):
+    answer = ""
+    temp = 0
+    dic = {}
+    for part in participant:
+        dic[hash(part)] = part
+        temp += int(hash(part))
+    for com in completion:
+        temp -= hash(com)
+    answer = dic[temp]
 
-if value != 0:
-    result.append(str(value))
+    return answer
 
-print("".join(result))
+
+print(solution(participant, completion))
