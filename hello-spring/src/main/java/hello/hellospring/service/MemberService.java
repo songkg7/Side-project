@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+// data 를 저장하거나 변경할 땐 항상 Transactional 이 있어야 한다.
 @Transactional
 public class MemberService {
 
@@ -22,7 +23,6 @@ public class MemberService {
     public Long join(Member member) {
 
         validateDuplicateMember(member); // 중복 회원 검증
-
         memberRepository.save(member);
         return member.getId();
     }
